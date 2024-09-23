@@ -5,178 +5,207 @@
   <meta charset="utf-8" />
   <title>Euclidean Construction Design</title>
   <link rel="icon" href="/resources/reuleaux2.png">
-<script defer src="../main.230a996fef2c191d13df.js"></script><link href="../main.33de860faaae99657c4a.css" rel="stylesheet"></head>
+<script defer src="../main.11c64c2240f4ab2f997c.js"></script><link href="../main.f0e3f482afa1ebca731f.css" rel="stylesheet"></head>
 
 <body id="article-body">
-  <article id="euclidean-construction-article">
-    <h1>Euclidean Construction</h1>
+  <div id="euclidean-construction-article">
+    <h1>Euclidean Construction Design</h1>
+    <!-- 
+      which can be seen in traditional designs across much of the world. Some of these designs
+      were developed using this tool, while others can be described using it. -->
+    <!-- This is my current obsession: a method for constructing figures on a 2D
+      space, which was introduced by Euclid in his <em>Elements</em>. -->
     <p>
-      Euclidean Construction is a method for constructing figures on a canvas with just two tools: a straightedge and a
-      compass.
+      This is my current obsession: the relationship between <a
+        href="https://en.wikipedia.org/wiki/Straightedge_and_compass_construction">Euclidean
+        construction</a> and traditional design across the world.
     </p>
-
-    <section class="example-section">
-      <h3>
-        Two points
-      </h3>
-      <p>
-        You start with two points <a href="#disclaimer-1">[1]</a>:
-      </p>
-      <div id="example-start-with-two-points">
-        <div class="example-canvas-loading-wrapper">
-          <div class="example-canvas-loader"></div>
-        </div>
-      </div>
-      <p>
-        From this starting point, you can construct anything <a href="#disclaimer-2">[2]</a>.
-      </p>
-    </section>
-
-    <section class="example-section">
-      <h3>Circles</h3>
-      <p>
-        Place the compass with one end on one point and the other end on another point and you can draw a circle.
-      </p>
-      <div id="example-circle">
-        <div class="example-canvas-loading-wrapper">
-          <div class="example-canvas-loader"></div>
-        </div>
-      </div>
-      <p>Why not have a circle around point B?</p>
-      <div id="example-two-circles">
-        <div class="example-canvas-loading-wrapper">
-          <div class="example-canvas-loader"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="example-section">
-      <h3>Lines</h3>
-      <p>
-        Use the straightedge to draw a line through two points.
-      </p>
-      <div id="example-line"></div>
-      <p>Or a line <em>segment</em> between the two points.</p>
-      <div id="example-line-segment">
-        <div class="example-canvas-loading-wrapper">
-          <div class="example-canvas-loader"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="example-section">
-      <h3>
-        Intersections
-      </h3>
-      <p>Define new points at the intersections of two figures</p>
-      <div id="example-circle-intersection">
-        <div class="example-canvas-loading-wrapper">
-          <div class="example-canvas-loader"></div>
-        </div>
-      </div>
-      <div id="example-circle-line-intersections">
-        <div class="example-canvas-loading-wrapper">
-          <div class="example-canvas-loader"></div>
-        </div>
-      </div>
-      <p>
-        In this last example, <code>E</code> is also the exact midpoint of
-        <code>A</code> and <code>B</code>.
-      </p>
-    </section>
-
-    <section class="example-section">
-      <h4>Disclaimers</h4>
-      <ol class="disclaimer-list">
-        <li id="disclaimer-1">
-          Generally, you can start with some number of figures (e.g. a line, two
-          non-overlapping circles, etc). It doesn’t have to be two points, but
-          it seems that two points is the simplest beginning from which anything
-          can be constructed.
-        </li>
-        <li id="disclaimer-2">
-          Well, you can construct anything that is constructable 😅. It looks
-          like, in Euclid’s time, it was assumed that Euclidean Construction was
-          sufficient to construct anything that was legal in Euclidean Geometry,
-          though this was later found to
-
-          <a href="https://en.wikipedia.org/wiki/Straightedge_and_compass_construction#Impossible_constructions">not
-            be the case</a>.
-
-          However, it’s still rated for its simplicity,
-          unambiguity and that it requires no existing system of measurement
-          (which can never be fully accurate).
-        </li>
-      </ol>
-    </section>
-
-    <h1 style="margin-top: 2em;">Euclidean Construction Design</h1>
-
     <p>
-      This method of construction has been <a
-        href="https://en.wikipedia.org/wiki/Straightedge_and_compass_construction">well studied mathematically</a>.
-      It's also widely used for design, which is what I want to talk about here.
+      I've created a very simple programming language for describing Euclidean
+      constructions, and will use this to explore how some of these designs
+      could have been (or could be) constructed. Later, I hope to also explore the use of
+      extensions to Euclidean construction (e.g. origami) on designs.
     </p>
-
-    <section class="example-section">
-      <h3>Example: London Stone Screen</h3>
+    <div class="disclaimer-box-wrapper2">
+      <div class="disclaimer-box-wrapper">
+        <div class="disclaimer-box">
+          First, a <strong>disclaimer</strong>: I am no expert on maths or art
+          history —
+          <em>far from it!</em>
+          I am a programmer. I will try to not make sweeping and incorrect
+          generalizations to the best of my ability to suppress that unfortunate
+          instinct.
+        </div>
+      </div>
+      <div id="disclaimer-box-background"></div>
+    </div>
+    <div class="example-super-section">
+      <h2>Euclidean Construction</h2>
       <p>
-        I've seen Euclidean construction patterns used to design stone screens
-        that are slotted into brick garden walls where I live in London. Here
-        are some examples:
+        Euclidean construction is a method for constructing figures on a canvas
+        with just two tools: a straightedge and a compass.
       </p>
-      <h4>Four Petal</h4>
-      <div class="text-center">
-        <img class="example-image" src="/resources/fourpetalstonescreen.png" alt="Four-Petal Designed Stone Screen" />
-      </div>
-      <div id="example-four-petal-stone-screen">
-        <div class="example-canvas-loading-wrapper">
-          <div class="example-canvas-loader"></div>
-        </div>
-      </div>
-      <h4>Double Tri-Cross</h4>
-      <div class="text-center">
-        <img class="example-image" src="/resources/stonescreen2.jpg" alt="Double Tri-Cross Designed Stone Screen" />
-      </div>
-      <div id="example-double-tri-cross-stone-screen">
-        <div class="example-canvas-loading-wrapper">
-          <div class="example-canvas-loader"></div>
-        </div>
-      </div>
-    </section>
 
-    <section class="example-section">
-      <h3>Example: Islamic Geometric Patterns</h3>
+      <div class="example-section">
+        <h3>
+          Two points
+        </h3>
+        <p>
+          You start with two points <a href="#disclaimer-1">[1]</a>:
+        </p>
+        <div id="example-start-with-two-points">
+          <div class="example-canvas-loading-wrapper">
+            <div class="example-canvas-loader"></div>
+          </div>
+        </div>
+        <p>
+          From this starting point, you can construct anything <a href="#disclaimer-2">[2]</a>.
+        </p>
+      </div>
+
+      <div class="example-section">
+        <h3>Circles</h3>
+        <p>
+          Place the compass with one end on one point and the other end on another point and you can draw a circle.
+        </p>
+        <div id="example-circle">
+          <div class="example-canvas-loading-wrapper">
+            <div class="example-canvas-loader"></div>
+          </div>
+        </div>
+        <p>Why not have a circle around point B?</p>
+        <div id="example-two-circles">
+          <div class="example-canvas-loading-wrapper">
+            <div class="example-canvas-loader"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-section">
+        <h3>Lines</h3>
+        <p>
+          Use the straightedge to draw a line through two points.
+        </p>
+        <div id="example-line"></div>
+        <p>Or a line <em>segment</em> between the two points.</p>
+        <div id="example-line-segment">
+          <div class="example-canvas-loading-wrapper">
+            <div class="example-canvas-loader"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-section">
+        <h3>
+          Intersections
+        </h3>
+        <p>Define new points at the intersections of two figures</p>
+        <div id="example-circle-intersection">
+          <div class="example-canvas-loading-wrapper">
+            <div class="example-canvas-loader"></div>
+          </div>
+        </div>
+        <div id="example-circle-line-intersections">
+          <div class="example-canvas-loading-wrapper">
+            <div class="example-canvas-loader"></div>
+          </div>
+        </div>
+        <p>
+          In this last example, <code>E</code> is also the exact midpoint of
+          <code>A</code> and <code>B</code>.
+        </p>
+      </div>
+    </div>
+
+    <div class="example-super-section">
+      <h2>Design Examples</h2>
+
       <p>
-        <a href="https://en.wikipedia.org/wiki/Islamic_geometric_patterns">Islamic geometric patterns</a> are often
-        constructed using Euclidean
-        construction.
+        This method of construction has been <a
+          href="https://en.wikipedia.org/wiki/Straightedge_and_compass_construction">well studied mathematically</a>.
+        It's also widely used for design, which is what I want to talk about here.
       </p>
-      <h4>The Great Mosque of Córdoba <a href=" #disclaimer-3">[3]</a></h4>
-      <div class="text-center">
-        <img class="example-image" src="/resources/greatmosqueofcordobacoloured.png"
-          alt="A tiling found in the Great Mosque of Córdoba" />
-      </div>
-      <div id="example-great-mosque-of-cordoba">
-        <div class="example-canvas-loading-wrapper">
-          <div class="example-canvas-loader"></div>
+
+      <div class="example-section">
+        <h3>Example: London Stone Screen</h3>
+        <p>
+          I've seen Euclidean construction patterns used to design stone screens
+          that are slotted into brick garden walls where I live in London. Here
+          are some examples:
+        </p>
+        <h4>Four Petal</h4>
+        <div class="text-center">
+          <img class="example-image" src="/resources/fourpetalstonescreen.png" alt="Four-Petal Designed Stone Screen" />
+        </div>
+        <div id="example-four-petal-stone-screen">
+          <div class="example-canvas-loading-wrapper">
+            <div class="example-canvas-loader"></div>
+          </div>
+        </div>
+        <h4>Double Tri-Cross</h4>
+        <div class="text-center">
+          <img class="example-image" src="/resources/stonescreen2.jpg" alt="Double Tri-Cross Designed Stone Screen" />
+        </div>
+        <div id="example-double-tri-cross-stone-screen">
+          <div class="example-canvas-loading-wrapper">
+            <div class="example-canvas-loader"></div>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section class="example-section">
-      <h4>Disclaimers</h4>
-      <ol start="3" class="disclaimer-list">
-        <li id="disclaimer-3">
-          I was unfortunately not able to find a photo of the original pattern in the Great Mosque of Córdoba.
-          This is an illustration by Ton Esink (<a href="https://uk.pinterest.com/pin/456833955936125145/">source</a>).
-          The pattern for forming it was found in the book <a
-            href="https://www.amazon.co.uk/Islamic-Geometric-Patterns-Eric-Broug/dp/0500294682">Islamic Geometric
-            Patterns</a>, by Eric Broug.
-        </li>
-      </ol>
-    </section>
-  </article>
+      <div class="example-section">
+        <h3>Example: Islamic Geometric Patterns</h3>
+        <p>
+          <a href="https://en.wikipedia.org/wiki/Islamic_geometric_patterns">Islamic geometric patterns</a> are often
+          constructed using Euclidean
+          construction.
+        </p>
+        <h4>The Great Mosque of Córdoba <a href=" #disclaimer-3">[3]</a></h4>
+        <div class="text-center">
+          <img class="example-image" src="/resources/greatmosqueofcordobacoloured.png"
+            alt="A tiling found in the Great Mosque of Córdoba" />
+        </div>
+        <div id="example-great-mosque-of-cordoba">
+          <div class="example-canvas-loading-wrapper">
+            <div class="example-canvas-loader"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-section">
+        <h4>Disclaimers</h4>
+        <ol class="disclaimer-list">
+          <li id="disclaimer-1">
+            Generally, you can start with some number of figures (e.g. a line, two
+            non-overlapping circles, etc). It doesn’t have to be two points, but
+            it seems that two points is the simplest beginning from which anything
+            can be constructed.
+          </li>
+          <li id="disclaimer-2">
+            Well, you can construct anything that is constructable 😅. It looks
+            like, in Euclid’s time, it was assumed that Euclidean Construction was
+            sufficient to construct anything that was legal in Euclidean Geometry,
+            though this was later found to
+
+            <a href="https://en.wikipedia.org/wiki/Straightedge_and_compass_construction#Impossible_constructions">not
+              be the case</a>.
+
+            However, it’s still rated for its simplicity,
+            unambiguity and that it requires no existing system of measurement
+            (which can never be fully accurate).
+          </li>
+          <li id="disclaimer-3">
+            I was unfortunately not able to find a photo of the original pattern in the Great Mosque of Córdoba.
+            This is an illustration by Ton Esink (<a
+              href="https://uk.pinterest.com/pin/456833955936125145/">source</a>).
+            The pattern for forming it was found in the book <a
+              href="https://www.amazon.co.uk/Islamic-Geometric-Patterns-Eric-Broug/dp/0500294682">Islamic Geometric
+              Patterns</a>, by Eric Broug.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
