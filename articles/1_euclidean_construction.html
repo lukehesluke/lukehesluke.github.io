@@ -5,16 +5,11 @@
   <meta charset="utf-8" />
   <title>Euclidean Construction Design</title>
   <link rel="icon" href="/resources/reuleaux2.png">
-<script defer src="../main.11c64c2240f4ab2f997c.js"></script><link href="../main.f0e3f482afa1ebca731f.css" rel="stylesheet"></head>
+<script defer src="../main.a15be27cfc5dc3f9699a.js"></script><link href="../main.f7b576e6a1ae805a2306.css" rel="stylesheet"></head>
 
 <body id="article-body">
   <div id="euclidean-construction-article">
     <h1>Euclidean Construction Design</h1>
-    <!-- 
-      which can be seen in traditional designs across much of the world. Some of these designs
-      were developed using this tool, while others can be described using it. -->
-    <!-- This is my current obsession: a method for constructing figures on a 2D
-      space, which was introduced by Euclid in his <em>Elements</em>. -->
     <p>
       This is my current obsession: the relationship between <a
         href="https://en.wikipedia.org/wiki/Straightedge_and_compass_construction">Euclidean
@@ -24,7 +19,7 @@
       I've created a very simple programming language for describing Euclidean
       constructions, and will use this to explore how some of these designs
       could have been (or could be) constructed. Later, I hope to also explore the use of
-      extensions to Euclidean construction (e.g. origami) on designs.
+      extensions to Euclidean construction (e.g. origami) on these types of designs.
     </p>
     <div class="disclaimer-box-wrapper2">
       <div class="disclaimer-box-wrapper">
@@ -45,76 +40,68 @@
         Euclidean construction is a method for constructing figures on a canvas
         with just two tools: a straightedge and a compass.
       </p>
+      <p>
+        Here are the production rules, which will all be demonstrated in an
+        interactive demo below:
+      </p>
+      <ul>
+        <li>
+          <strong>The start</strong>: You start with two points <a href="#disclaimer-1">[1]</a>.
+        </li>
+        <li>
+          <strong>Circle</strong>, or <strong>Arc</strong>: Place the compass
+          with one end on one point and the other end on another point and you
+          can draw a circle. An arc can be constructed on top of a circle by
+          having the "pen" end start at one point and end at another point.
+        </li>
+        <li>
+          <strong>Line</strong>, <strong>Ray</strong>, or <strong>Line
+            Segment</strong>: Use the straightedge to draw a line through two
+          points, which may be cut off at one or both ends.
+        </li>
+        <li>
+          <strong>Intersection</strong>: Define new points at the intersections
+          of two figures. e.g. a line segment and a circle, or two circles, etc.
+        </li>
+      </ul>
+      <p>
+        Here is an interactive demo which demonstrates most of these production
+        rules.
 
-      <div class="example-section">
-        <h3>
-          Two points
-        </h3>
-        <p>
-          You start with two points <a href="#disclaimer-1">[1]</a>:
-        </p>
-        <div id="example-start-with-two-points">
-          <div class="example-canvas-loading-wrapper">
-            <div class="example-canvas-loader"></div>
-          </div>
-        </div>
-        <p>
-          From this starting point, you can construct anything <a href="#disclaimer-2">[2]</a>.
-        </p>
-      </div>
+        This demo was made using a custom programming language for describing
+        Euclidean constructions, which will be explained in more detail later
+        (though you can see the code that describes it with the "Code" button).
 
-      <div class="example-section">
-        <h3>Circles</h3>
-        <p>
-          Place the compass with one end on one point and the other end on another point and you can draw a circle.
-        </p>
-        <div id="example-circle">
-          <div class="example-canvas-loading-wrapper">
-            <div class="example-canvas-loader"></div>
-          </div>
-        </div>
-        <p>Why not have a circle around point B?</p>
-        <div id="example-two-circles">
-          <div class="example-canvas-loading-wrapper">
-            <div class="example-canvas-loader"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="example-section">
-        <h3>Lines</h3>
-        <p>
-          Use the straightedge to draw a line through two points.
-        </p>
-        <div id="example-line"></div>
-        <p>Or a line <em>segment</em> between the two points.</p>
-        <div id="example-line-segment">
-          <div class="example-canvas-loading-wrapper">
-            <div class="example-canvas-loader"></div>
-          </div>
+        Use the playback buttons to animate it.
+      </p>
+      <div id="example-circle-line-intersections">
+        <div class="example-canvas-loading-wrapper">
+          <div class="example-canvas-loader"></div>
         </div>
       </div>
+      <p>
+        It's interesting to note that, in this demo example, <code>E</code> is
+        also the exact midpoint of
+        <code>A</code> and <code>B</code>.
+      </p>
 
-      <div class="example-section">
-        <h3>
-          Intersections
-        </h3>
-        <p>Define new points at the intersections of two figures</p>
-        <div id="example-circle-intersection">
-          <div class="example-canvas-loading-wrapper">
-            <div class="example-canvas-loader"></div>
-          </div>
-        </div>
-        <div id="example-circle-line-intersections">
-          <div class="example-canvas-loading-wrapper">
-            <div class="example-canvas-loader"></div>
-          </div>
-        </div>
-        <p>
-          In this last example, <code>E</code> is also the exact midpoint of
-          <code>A</code> and <code>B</code>.
-        </p>
-      </div>
+      <h3>Scope of construction</h3>
+      <p>
+        These production rules are sufficient to construct many things, but
+        are limited.
+      </p>
+      <p>
+        It looks like, in Euclid’s time, it was assumed that Euclidean
+        Construction was sufficient to construct anything that was legal in
+        Euclidean Geometry, though this was later found to
+
+        <a href="https://en.wikipedia.org/wiki/Straightedge_and_compass_construction#Impossible_constructions">not
+          be the case</a>.
+      </p>
+      <p>
+        However, it’s still rated for its simplicity, unambiguity and that it
+        requires no system of measurement.
+      </p>
     </div>
 
     <div class="example-super-section">
@@ -124,6 +111,15 @@
         This method of construction has been <a
           href="https://en.wikipedia.org/wiki/Straightedge_and_compass_construction">well studied mathematically</a>.
         It's also widely used for design, which is what I want to talk about here.
+      </p>
+
+      <p>
+        Here are a number of examples of designs that are constructible using
+        Euclidean construction. With each example is a picture of how the design
+        looks in the real world, followed by an interactive demo, which shows
+        the "idealised" form of the construction and the steps that could be
+        used to construct it. Again, the playback buttons can be used to animate
+        backwards and forwards.
       </p>
 
       <div class="example-section">
@@ -160,7 +156,7 @@
           constructed using Euclidean
           construction.
         </p>
-        <h4>The Great Mosque of Córdoba <a href=" #disclaimer-3">[3]</a></h4>
+        <h4>The Great Mosque of Córdoba <a href=" #disclaimer-2">[3]</a></h4>
         <div class="text-center">
           <img class="example-image" src="/resources/greatmosqueofcordobacoloured.png"
             alt="A tiling found in the Great Mosque of Córdoba" />
@@ -170,6 +166,10 @@
             <div class="example-canvas-loader"></div>
           </div>
         </div>
+        <p>
+          In this demo, the point names are excluded as there are so many points
+          that they will clutter the view.
+        </p>
       </div>
 
       <div class="example-section">
@@ -182,19 +182,6 @@
             can be constructed.
           </li>
           <li id="disclaimer-2">
-            Well, you can construct anything that is constructable 😅. It looks
-            like, in Euclid’s time, it was assumed that Euclidean Construction was
-            sufficient to construct anything that was legal in Euclidean Geometry,
-            though this was later found to
-
-            <a href="https://en.wikipedia.org/wiki/Straightedge_and_compass_construction#Impossible_constructions">not
-              be the case</a>.
-
-            However, it’s still rated for its simplicity,
-            unambiguity and that it requires no existing system of measurement
-            (which can never be fully accurate).
-          </li>
-          <li id="disclaimer-3">
             I was unfortunately not able to find a photo of the original pattern in the Great Mosque of Córdoba.
             This is an illustration by Ton Esink (<a
               href="https://uk.pinterest.com/pin/456833955936125145/">source</a>).
