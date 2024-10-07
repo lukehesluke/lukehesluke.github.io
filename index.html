@@ -16,6 +16,128 @@
       overflow: hidden;
     }
 
+    #the-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3em;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 80px;
+      display: inline-block;
+      margin-top: 2em;
+      left: 50%;
+      transform: translateX(-50%);
+      max-height: 30em;
+      max-width: 50em;
+      transition:
+        max-height 0.5s ease-in-out,
+        max-width 0.5s ease-in-out,
+        padding 0.5s ease-in-out,
+        border-radius 0.5s ease-in-out;
+    }
+
+    #minimize-btn {
+      font-size: 1.5em;
+      background-color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
+      position: absolute;
+      top: 20px;
+      width: 60px;
+      height: 30px;
+      transform: translate(-50%);
+      transition: top 0.5s ease-in-out;
+    }
+
+    #the-content.minimized {
+      max-height: 40px;
+      max-width: 70px;
+      border-radius: 15px;
+      padding: 0;
+    }
+
+    @keyframes hide-content-contents-visibility {
+      from {
+        visibility: visible;
+      }
+
+      to {
+        visibility: hidden;
+      }
+    }
+
+    @keyframes hide-content-contents-opacity {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+      }
+    }
+
+    @keyframes show-content-contents-visibility {
+      from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+    }
+
+    @keyframes show-content-contents-opacity {
+      0% {
+        opacity: 0;
+      }
+
+      75% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    #the-content.minimized #the-content-contents {
+      animation:
+        hide-content-contents-visibility 0.125s step-end forwards,
+        hide-content-contents-opacity 0.125s ease-in-out forwards;
+    }
+
+    #the-content:not(.minimized):not(.init) #the-content-contents {
+      visibility: visible;
+      animation:
+        show-content-contents-visibility 0.375s step-end forwards,
+        show-content-contents-opacity 0.5s ease-in-out forwards;
+    }
+
+    #the-content.minimized #minimize-btn {
+      top: 5px;
+    }
+
+    #the-header {
+      /* "Tango" */
+      color: #ff8243;
+      font-size: 6em;
+      margin: 0.5em;
+      text-shadow: 2px 2px rgba(255, 130, 67, 0.25);
+    }
+
+    .link-container {
+      font-size: 3em;
+    }
+
+    .link-1 {
+      color: ivory
+    }
+
+    .link-2 {
+      color: #a4b887;
+    }
+
     #the-background {
       position: fixed;
       top: 0;
@@ -50,23 +172,23 @@
     }
 
     .star-color-2 {
-      background-color: #CAE5FF;
       /* Pale blue */
+      background-color: #CAE5FF;
     }
 
     .star-color-3 {
-      background-color: #FFFFD4;
       /* Pale yellow */
+      background-color: #FFFFD4;
     }
 
     .star-color-4 {
-      background-color: #FFE5B4;
       /* Pale orange */
+      background-color: #FFE5B4;
     }
 
     .star-color-5 {
-      background-color: #FFCCCB;
       /* Pale red */
+      background-color: #FFCCCB;
     }
 
     .star-size-1 {
@@ -96,154 +218,31 @@
       animation-delay: -2s;
     }
 
-    #the-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-    }
-
-    #the-header {
-      /* "Tango" */
-      color: #ff8243;
-      font-size: xxx-large;
-      margin: 1em 0;
-    }
-
-    .link-container {
-      font-size: xx-large;
-    }
-
-    .link-1 {
-      color: ivory
-    }
-
-    .link-2 {
-      color: #a4b887;
+    .planet {
+      position: absolute;
+      border-radius: 50%;
     }
   </style>
-</head>
+<script defer src="mainPage.6f03de4d32ccb6f8fdd8.js"></script></head>
 
 <body>
   <div id="the-background"></div>
 
-  <div id="the-content">
-    <h1 id="the-header">lukehesluke.com</h1>
-    <p class="link-container">
-      <a class="link-1" href="https://github.com/lukehesluke">My GitHub</a>
-    </p>
-    <p class="link-container">
-      <a class="link-2" href="articles/1_euclidean_construction.html">Euclidean Construction</a>
-    </p>
+  <!-- The purpose of `.init` is to make sure that the "show" animations do not
+  occur when the page is first loaded. -->
+  <div id="the-content" class="init">
+    <button id="minimize-btn">-</button>
+    <div id="the-content-contents">
+      <h1 id="the-header">lukehesluke.com</h1>
+      <p class="link-container">
+        <a class="link-1" href="https://github.com/lukehesluke">My GitHub</a>
+      </p>
+      <p class="link-container">
+        <a class="link-2" href="articles/1_euclidean_construction.html">Euclidean Construction</a>
+      </p>
+    </div>
   </div>
 
-  <script>
-    /**
-     * @typedef {'venus' | 'earth' | 'mars'} PlanetId
-     *
-     * @typedef {{
-     *   name: string;
-     *   radiusKm: number;
-     *   distanceFromSunKm: number;
-     *   orbitalPeriodDays: number;
-     *   initAngleDeg: number;
-     * }} PlanetStatic
-     *
-     * @typedef {{
-     *   angleDeg: number;
-     * }} PlanetDynamic
-     */
-
-    function setupStars() {
-      function createStar() {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.classList.add(`star-size-${Math.floor(Math.random() * 3) + 1}`);
-        star.classList.add(`star-delay-${Math.floor(Math.random() * 3) + 1}`);
-        star.classList.add(`star-color-${Math.floor(Math.random() * 5) + 1}`);
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        return star;
-      }
-
-      const background = document.getElementById('the-background');
-      for (let i = 0; i < 250; i++) {
-        const star = createStar();
-        background.appendChild(star);
-      }
-    }
-
-    function setupPlanetSimulation() {
-      /* TODO3 
-      - Put this into TS, with webpack, etc.
-      - Find a library that can perform orbital calculations based on parameters
-      - Get all params from JPL Horizons
-      - Calculate position of each planet at a given time
-      - From a fixed location on Earth and a fixed time every day (and a fixed view frustum), project the planets onto the screen
-      - Advance positions at something like 10 days/second, updating positions each time.
-      */
-      // /**
-      //  * @type {Record<PlanetId, Planet>}
-      //  */
-      // const planetsStaticData = {
-      //   venus: {
-      //     name: 'Venus',
-      //     radiusKm: 6052,
-      //     distanceFromSunKm: 108 * (10 ** 6),
-      //     orbitalPeriodDays: 225,
-      //     // I got this from True Anomaly from https://ssd.jpl.nasa.gov/horizons/app.html#/ at date 2024-10-06
-      //     initAngleDeg: 141.1,
-      //   },
-      //   earth: {
-      //     name: 'Earth',
-      //     radiusKm: 6371,
-      //     distanceFromSunKm: 150 * (10 ** 6),
-      //     orbitalPeriodDays: 365,
-      //     // I got this from True Anomaly from https://ssd.jpl.nasa.gov/horizons/app.html#/ at date 2024-10-06
-      //     initAngleDeg: 272.1,
-      //   },
-      //   mars: {
-      //     name: 'Mars',
-      //     radiusKm: 3390,
-      //     distanceFromSunKm: 228 * (10 ** 6),
-      //     orbitalPeriodDays: 687,
-      //     // I got this from True Anomaly from https://ssd.jpl.nasa.gov/horizons/app.html#/ at date 2024-10-06
-      //     initAngleDeg: 272.1,
-      //   },
-      // };
-
-      // /**
-      //  * @type {Record<PlanetId, PlanetDynamic>}
-      //  */
-      // const planetsDynamicData = {
-      //   venus: {
-      //     angleDeg: planetsStaticData.venus.initAngleDeg,
-      //   },
-      //   earth: {
-      //     angleDeg: planetsStaticData.earth.initAngleDeg,
-      //   },
-      //   mars: {
-      //     angleDeg: planetsStaticData.mars.initAngleDeg,
-      //   },
-      // };
-
-      // /**
-      //  * @param {PlanetId} planetId
-      //  * @param {number} timeDeltaMins
-      //  */
-      // function updatePlanet(planetId, timeDeltaMins) {
-      //   const planet = planetsDynamicData[planetId];
-      //   const planetStatic = planetsStaticData[planetId];
-
-      //   const timeDeltaDays = timeDeltaMins / (24 * 60);
-
-      //   // Simplified calculation
-      //   const angleDeltaDeg = (timeDeltaDays / planetStatic.orbitalPeriodDays) * 360;
-      //   planet.angleDeg = (planet.angleDeg + angleDeltaDeg) % 360;
-      // }
-    }
-
-    setupStars();
-  </script>
 </body>
 
 </html>
