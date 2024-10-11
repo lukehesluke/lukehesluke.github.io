@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>lukehesluke.com</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,17 +61,22 @@
       z-index: 100;
       width: 85%;
       max-width: 25em;
-      height: 35em;
+      height: 30em;
+      max-height: 95vh;
       box-shadow: 0 0 20px hsl(25.2deg 46.3% 5%);
       border-radius: 5px;
       box-sizing: border-box;
       position: relative;
-      overflow: hidden;
+      /* overflow: hidden; */
+      overflow: auto;
       background-image: url('/resources/vellum2.jpg');
+      /* Scale everything up a bit */
+      font-size: 1.5em;
     }
 
     .manuscript-page {
       position: absolute;
+      overflow: auto;
       /* Make the vellum a little lighter */
       background-color: rgba(255, 255, 255, 0.3);
       color: hsl(46 100% 5%);
