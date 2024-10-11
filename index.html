@@ -4,139 +4,124 @@
 <head>
   <meta charset="utf-8" />
   <title>lukehesluke.com</title>
-  <!-- Source: https://www.favicon.cc/?action=icon&file_id=869825 -->
-  <link
-    href="data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAkL7/AIam3AB6kbkAGhcXAJGp0wBxgZwAf7H0ABocHQCqv+cAcISlALLA2ADC1PgAVFtrAE9edABmc44AqsX5AA8NDADI2vgAlrTiALbG4QBojswAU2KAADU6QAA4PkwAkKfOAFtqhgAlLT4AKi01AIGUugBpg6wAdoKXAJyqxQBTcKEAOUZbAIaw8gBRXG8Ae4aaAMvW7QCfrtEAiZzAAJyw1wBHS1gAhKHPAImfyQCbtuAARE9kAI+5+wB8jKwAgqfhAH6n6gBKUmQAmqK3ADg+TQCEkakAvdPuAH2VvgBMWG0AnabDAH+YvgCFlrgAfpzBAHiCmACjw/UAXHGTAJCw6gCgr8wAk7DqAHOj6ADh7v8Al7bqAHmOqgCRvPwAeo+2ADQ+TgB8kLAAk6e+AFplggAYFRQAoLvnALzN7wCHq+UAbIOlAIut4gBfb44ALDI9AHiElgClw/YAqMT5AIWcywCHuf0AqMj8AE1nkgBGUWMAlaK5AMPJ2wCIkJ8AWWmGAF9pfQB7ksAAVmyPAFFaYwAJCQQAsb3cAB8dGwCDn8wAqcf6AEpjkACPufUAcXaAAM3c+QA5Oz4Ajrz+AISQqQCLptgAPEFHAExVZwBvf5sAepTHABcbHwBgboQAW4fOADAxMwCUrtUACQgLAN/r+QDd6v8AQUhTALLD3QCGm8EAjJy7AEBNYgB0jrYAk6C+AIqj0AAsKysAbZfaAFtpiABZbYsASnKsAJ2nwQAYHCMAwdbyAMLV+ABSXW4AP0xgAIKd0QBddaMADQ8YAJKdtgCzyO0AdY20AJ6bpwBYZHoAVH6+AKe10AB7j7EAVGiGABYTEgBbaYAARldvAFJWWgA6Q08AOkRSANjn+ABdbIkAv9PzAJyoxQCAl8AAKzA7AMfT6gB/mcYAydbqAGBxjwCqw/EACg0TAMTd/wAkJSQAXnikAG52gwCAo9sANzlEAFp9swBpfJ4AfantAENWdgB8lr4Aw9DrAD9ESgAoMT8AUFltAIuZtQBCSFYAfoWVAGNzjQCgsc8APUtoALPF5gCpyPgAotD+AFNgeQCjrs8AfImhAIKGmADj7/8Ag6LZADg7QgB4qe4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcozO+OS4AAAAAAAAAAI2ikHglcTbKH2IAAAAAALEqmQ+3TIGrKCA8PgAAAE68bXW/wxSqDBJulifBAAB6ZZ0hHmNpUzFYRkNPQgARzl1khJN2ks1RI0ETcizLBLUkrWuyi5p5RAfPWjK0pwhKuVy2FYi4cGwBx0gvAh1oc5DCl7pZlcmwey0FGSk0nhd0nzuCP2cQrsZbalcJhWZvDVZeC7uspH1FzH4mX5gAh6GzYIybgFA3jo+mxToAAHxVgxZAUqg4PYYrA0kaAAAAlL2RDqUGMEdLnApNAAAAAACvGyKgyIpUiWHEAAAAAAAAAAB3qTV/wBgAAAAAAPgfAADgBwAAwAMAAIABAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAADAAwAA4AcAAPgfAAA="
-    rel="icon" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap" rel="stylesheet"> -->
+
+  <!-- <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon:ital@0;1&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/x-icon" href="/resources/eye_favicon2.png">
 
   <style>
     body {
-      background-color: black;
       margin: 0;
-      overflow: hidden;
-    }
-
-    #the-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 3em;
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 80px;
-      display: inline-block;
-      margin-top: 2em;
-      left: 50%;
-      transform: translateX(-50%);
-      max-height: 30em;
-      max-width: 50em;
-      transition:
-        max-height 0.5s ease-in-out,
-        max-width 0.5s ease-in-out,
-        padding 0.5s ease-in-out,
-        border-radius 0.5s ease-in-out;
-    }
-
-    #minimize-btn {
-      font-size: 1.5em;
-      background-color: white;
-      border-radius: 10px;
-      cursor: pointer;
-      border: none;
-      position: absolute;
-      top: 20px;
-      width: 60px;
-      height: 30px;
-      transform: translate(-50%);
-      transition: top 0.5s ease-in-out;
-    }
-
-    #the-content.minimized {
-      max-height: 40px;
-      max-width: 70px;
-      border-radius: 15px;
       padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      /* background-color: #f0e6d2; */
+      /* Light beige background */
     }
 
-    @keyframes hide-content-contents-visibility {
-      from {
-        visibility: visible;
-      }
+    /* .im-fell-english-sc-regular {
+      font-family: "IM Fell English SC", serif;
+      font-weight: 400;
+      font-style: normal;
+    } */
 
-      to {
-        visibility: hidden;
-      }
+    /* .im-fell-english-regular {
+      font-family: "IM Fell English", serif;
+      font-weight: 400;
+      font-style: normal;
     }
 
-    @keyframes hide-content-contents-opacity {
-      from {
-        opacity: 1;
-      }
+    .im-fell-english-regular-italic {
+      font-family: "IM Fell English", serif;
+      font-weight: 400;
+      font-style: italic;
+    } */
 
-      to {
-        opacity: 0;
-      }
+    .im-fell-french-canon-regular {
+      font-family: "IM Fell French Canon", serif;
+      font-weight: 400;
+      font-style: normal;
     }
 
-    @keyframes show-content-contents-visibility {
-      from {
-        visibility: hidden;
-      }
-
-      to {
-        visibility: visible;
-      }
+    .im-fell-french-canon-regular-italic {
+      font-family: "IM Fell French Canon", serif;
+      font-weight: 400;
+      font-style: italic;
     }
 
-    @keyframes show-content-contents-opacity {
-      0% {
-        opacity: 0;
-      }
-
-      75% {
-        opacity: 0;
-      }
-
-      100% {
-        opacity: 1;
-      }
+    .manuscript-page-wrapper {
+      z-index: 100;
+      width: 85%;
+      max-width: 25em;
+      height: 35em;
+      box-shadow: 0 0 20px hsl(25.2deg 46.3% 5%);
+      border-radius: 5px;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      background-image: url('/resources/vellum2.jpg');
     }
 
-    #the-content.minimized #the-content-contents {
-      animation:
-        hide-content-contents-visibility 0.125s step-end forwards,
-        hide-content-contents-opacity 0.125s ease-in-out forwards;
+    .manuscript-page {
+      position: absolute;
+      /* Make the vellum a little lighter */
+      background-color: rgba(255, 255, 255, 0.3);
+      color: hsl(46 100% 5%);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 5px;
+      padding: 40px;
+      text-align: center;
     }
 
-    #the-content:not(.minimized):not(.init) #the-content-contents {
-      visibility: visible;
-      animation:
-        show-content-contents-visibility 0.375s step-end forwards,
-        show-content-contents-opacity 0.5s ease-in-out forwards;
+    .small-p {
+      font-size: 0.8em;
     }
 
-    #the-content.minimized #minimize-btn {
-      top: 5px;
+    .small-p a {
+      color: inherit;
     }
 
-    #the-header {
-      /* "Tango" */
-      color: #ff8243;
-      font-size: 6em;
-      margin: 0.5em;
-      text-shadow: 2px 2px rgba(255, 130, 67, 0.25);
+    .small-p a:visited {
+      color: inherit;
     }
 
-    .link-container {
-      font-size: 3em;
+    .small-p a:hover {
+      color: hsl(226 60% 25%);
     }
 
-    .link-1 {
-      color: ivory
+    .large-p {
+      font-size: 1.2em;
     }
 
-    .link-2 {
-      color: #a4b887;
+    .separator {
+      border-top: 1px double black;
+      border-bottom: none;
+      width: 100px;
+      border-style: double;
     }
+
+    /* 
+    .manuscript-page::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://example.com/path-to-your-texture-image.jpg');
+      opacity: 0.1;
+      pointer-events: none;
+    } */
 
     #the-background {
       position: fixed;
@@ -144,8 +129,10 @@
       left: 0;
       width: 100%;
       height: 100%;
-      /* Slightly off-black */
-      background-color: #010203;
+      /* Slightly off-black
+      background-color: #010203; */
+      background-color: hsl(40 50% 11%);
+      filter: blur(1px);
       z-index: -1;
     }
 
@@ -217,28 +204,29 @@
     .star-delay-3 {
       animation-delay: -2s;
     }
-
-    .planet {
-      position: absolute;
-      border-radius: 50%;
-    }
   </style>
-<script defer src="mainPage.6f03de4d32ccb6f8fdd8.js"></script></head>
+<script defer src="mainPage.c5e8e5eac15cf0c8cd23.js"></script></head>
 
 <body>
-  <div id="the-background"></div>
+  <div id="the-background">
+  </div>
 
-  <!-- The purpose of `.init` is to make sure that the "show" animations do not
-  occur when the page is first loaded. -->
-  <div id="the-content" class="init">
-    <button id="minimize-btn">-</button>
-    <div id="the-content-contents">
-      <h1 id="the-header">lukehesluke.com</h1>
-      <p class="link-container">
-        <a class="link-1" href="https://github.com/lukehesluke">My GitHub</a>
+  <div class="manuscript-page-wrapper">
+    <div class="manuscript-page im-fell-french-canon-regular">
+      <p class="small-p">The</p>
+      <p class="large-p">WORKS</p>
+      <p class="small-p">OF</p>
+      <p class="large-p">lukehesluke.</p>
+      <img width="75px" src="/resources/printer_ornament.png" />
+      <hr class="separator" />
+      <p class="small-p">
+        <a href="https://github.com/lukehesluke">GitHub</a>
       </p>
-      <p class="link-container">
-        <a class="link-2" href="articles/1_euclidean_construction.html">Euclidean Construction</a>
+      <p class="small-p">
+        <a href="observatory/">The Observatory</a> (wip)
+      </p>
+      <p class="small-p">
+        <a href="articles/1_euclidean_construction.html">Euclidean Construction Design</a> (wip)
       </p>
     </div>
   </div>
