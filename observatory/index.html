@@ -13,11 +13,35 @@
     body {
       margin: 0;
     }
+
+    .ui-indicators {
+      margin: 10px;
+      z-index: 100;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: white;
+      font-family: monospace;
+    }
+
+    .ui-indicator {
+      display: inline-block;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 5px;
+    }
   </style>
-<script defer src="../observatory.2e631569668fffb935ae.js"></script></head>
+<script defer src="../observatory.a2365fe1efd4e3e21c9c.js"></script></head>
 
 <body>
-
+  <div class="ui-indicators">
+    <span class="ui-indicator">
+      Time:&nbsp;<span class="datetime"></span>
+    </span>
+    &nbsp;//&nbsp;
+    <span class="ui-indicator">
+      Step:&nbsp;<span class="time-step"></span>
+    </span>
+  </div>
 </body>
 
 </html>
