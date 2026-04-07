@@ -1,194 +1,544 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"><title>lukehesluke.com</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon:ital@0;1&display=swap" rel="stylesheet"><link rel="icon" type="image/x-icon" href="/resources/eye_favicon2.png"><style>body {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>~* luke *~</title>
+  <link rel="icon" type="image/gif" href="resources/images/icon.gif">
+  <style>
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #ff91a4;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      /* background-color: #f0e6d2; */
-      /* Light beige background */
+      font-family: "MS Sans Serif", "Microsoft Sans Serif", Tahoma, Geneva, sans-serif;
+      overflow-x: hidden;
+      image-rendering: pixelated;
     }
 
-    /* .im-fell-english-sc-regular {
-      font-family: "IM Fell English SC", serif;
-      font-weight: 400;
-      font-style: normal;
-    } */
-
-    /* .im-fell-english-regular {
-      font-family: "IM Fell English", serif;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    .im-fell-english-regular-italic {
-      font-family: "IM Fell English", serif;
-      font-weight: 400;
-      font-style: italic;
-    } */
-
-    .im-fell-french-canon-regular {
-      font-family: "IM Fell French Canon", serif;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    .im-fell-french-canon-regular-italic {
-      font-family: "IM Fell French Canon", serif;
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    .manuscript-page-wrapper {
-      z-index: 100;
-      width: 85%;
-      max-width: 25em;
-      height: 30em;
-      max-height: 95vh;
-      box-shadow: 0 0 20px hsl(25.2deg 46.3% 5%);
-      border-radius: 5px;
-      box-sizing: border-box;
-      position: relative;
-      /* overflow: hidden; */
-      overflow: auto;
-      background-image: url('/resources/vellum2.jpg');
-      /* Scale everything up a bit */
-      font-size: 1.5em;
-    }
-
-    .manuscript-page {
-      position: absolute;
-      overflow: auto;
-      /* Make the vellum a little lighter */
-      background-color: rgba(255, 255, 255, 0.3);
-      color: hsl(46 100% 5%);
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: 5px;
-      padding: 40px;
-      text-align: center;
-    }
-
-    .small-p {
-      font-size: 0.8em;
-    }
-
-    .small-p a {
-      color: inherit;
-    }
-
-    .small-p a:visited {
-      color: inherit;
-    }
-
-    .small-p a:hover {
-      color: hsl(226 60% 25%);
-    }
-
-    .large-p {
-      font-size: 1.2em;
-    }
-
-    .separator {
-      border-top: 1px double black;
-      border-bottom: none;
-      width: 100px;
-      border-style: double;
-    }
-
-    /* 
-    .manuscript-page::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('https://example.com/path-to-your-texture-image.jpg');
-      opacity: 0.1;
-      pointer-events: none;
-    } */
-
-    #the-background {
+    /* Subtle sparkle overlay */
+    .sparkles {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      /* Slightly off-black
-      background-color: #010203; */
-      background-color: hsl(40 50% 11%);
-      filter: blur(1px);
-      z-index: -1;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle var(--dur) ease-in-out infinite;
+      opacity: 0;
     }
 
     @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 0.7; transform: scale(1.2); }
+    }
 
-      0%,
-      100% {
-        opacity: 1;
-      }
+    /* Main layout */
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      padding: 24px 16px;
+    }
 
-      50% {
-        opacity: 0.2;
+    .main-square {
+      position: relative;
+      width: 360px;
+      height: 400px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 500px) {
+      .main-square {
+        width: 92vw;
+        height: 105vw;
       }
     }
 
-    .star {
+    /* Corner GIFs — natural size, centered on dashed border corners */
+    .corner-gif {
       position: absolute;
+      z-index: 2;
+    }
+
+    .corner-gif img {
+      display: block;
+      image-rendering: pixelated;
+    }
+
+    /* chao: 21x23 — center on corner at (8,8) */
+    .corner-nw { top: -3.5px; left: -2.5px; }
+    /* kirbswim: 27x25 */
+    .corner-ne { top: -4.5px; right: -5.5px; }
+    /* kirbrun: 16x16 */
+    .corner-sw { bottom: 0px; left: 0px; }
+    /* icosa: 32x32 */
+    .corner-se { bottom: -8px; right: -8px; }
+
+    .corner-sw img {
+      transform: scaleX(-1);
+    }
+
+    /* Decorative dashed border connecting corners */
+    .dashed-border {
+      position: absolute;
+      inset: 8px;
+      border: 2px dashed rgba(255, 255, 255, 0.35);
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* XP Window */
+    .xp-window {
+      position: absolute;
+      top: 32px;
+      left: 32px;
+      right: 32px;
+      bottom: 52px;
+      display: flex;
+      flex-direction: column;
+      /* Outer raised border */
+      border: 1px solid #0054e3;
+      border-radius: 8px 8px 0 0;
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.3),
+        2px 4px 16px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Title bar - XP Luna blue */
+    .xp-titlebar {
+      height: 30px;
+      min-height: 30px;
+      background: linear-gradient(
+        180deg,
+        #0997ff 0%,
+        #0053ee 8%,
+        #0050ee 20%,
+        #006bff 50%,
+        #0058e6 52%,
+        #0041d2 80%,
+        #0053ee 100%
+      );
+      display: flex;
+      align-items: center;
+      padding: 0 4px;
+      border-radius: 7px 7px 0 0;
+      position: relative;
+    }
+
+    .xp-titlebar-text {
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+      padding-left: 4px;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .xp-titlebar-text::before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
+      vertical-align: middle;
+      /* Tiny image icon using CSS */
+      background: linear-gradient(135deg, #7ec8e3 25%, #5ba3c9 75%);
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .xp-buttons {
+      display: flex;
+      gap: 2px;
+    }
+
+    .xp-btn {
+      width: 21px;
+      height: 21px;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      color: #fff;
+      cursor: default;
+      user-select: none;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    }
+
+    .xp-btn-min {
+      background: linear-gradient(180deg, #3c8df3 0%, #1859c5 100%);
+    }
+    .xp-btn-max {
+      background: linear-gradient(180deg, #3c8df3 0%, #1859c5 100%);
+    }
+    .xp-btn-close {
+      background: linear-gradient(180deg, #c45131 0%, #b63020 50%, #cf6a4e 100%);
+      border-color: rgba(255, 200, 180, 0.5);
+    }
+
+    .xp-btn-min::after { content: "_"; line-height: 1; margin-top: -4px; }
+    .xp-btn-max::after { content: "\25A1"; font-size: 11px; }
+    .xp-btn-close::after { content: "\00D7"; font-size: 16px; margin-top: -1px; }
+
+    /* Window content area */
+    .xp-content {
+      flex: 1;
+      background: #3a4a5c;
+      border-top: 1px solid #002a7a;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Carousel */
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .carousel-slide img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      image-rendering: auto;
+    }
+
+    /* Carousel nav areas */
+    .carousel-nav {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .carousel:hover .carousel-nav {
+      opacity: 1;
+    }
+
+    .carousel-nav-prev { left: 0; }
+    .carousel-nav-next { right: 0; }
+
+    .carousel-nav-arrow {
+      width: 24px;
+      height: 24px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 3px;
+      color: #fff;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      transition: background 0.15s;
+    }
+
+    .carousel-nav:hover .carousel-nav-arrow {
+      background: rgba(0, 0, 0, 0.65);
+    }
+
+    /* Carousel dots */
+    .carousel-dots {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 3;
+    }
+
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      animation: twinkle 3s infinite ease-in-out;
+      background: rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: background 0.2s;
     }
 
-    .star-color-1 {
-      background-color: white;
+    .carousel-dot.active {
+      background: rgba(255, 255, 255, 0.85);
     }
 
-    .star-color-2 {
-      /* Pale blue */
-      background-color: #CAE5FF;
+    /* Slide counter in top-right */
+    .carousel-counter {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      z-index: 3;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.5);
+      font-family: "Courier New", monospace;
+      user-select: none;
     }
 
-    .star-color-3 {
-      /* Pale yellow */
-      background-color: #FFFFD4;
+    /* GitHub link */
+    .link-area {
+      position: absolute;
+      bottom: 22px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 2;
     }
 
-    .star-color-4 {
-      /* Pale orange */
-      background-color: #FFE5B4;
+    .link-area a {
+      color: #fff;
+      font-size: 14px;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.7);
+      padding-bottom: 2px;
+      transition: border-color 0.2s, text-shadow 0.2s;
+      font-family: "Courier New", Courier, monospace;
+      letter-spacing: 1px;
     }
 
-    .star-color-5 {
-      /* Pale red */
-      background-color: #FFCCCB;
+    .link-area a:hover {
+      border-bottom-color: #fff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
     }
 
-    .star-size-1 {
-      width: 1px;
-      height: 1px;
+    /* Marquee-style scrolling text at bottom */
+    .marquee-container {
+      position: fixed;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      height: 18px;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
     }
 
-    .star-size-2 {
-      width: 2px;
-      height: 2px;
+    .marquee-text {
+      white-space: nowrap;
+      display: inline-block;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.2);
+      font-family: "Courier New", monospace;
+      letter-spacing: 2px;
+      position: absolute;
+      will-change: transform;
     }
+  </style>
+</head>
+<body>
 
-    .star-size-3 {
-      width: 3px;
-      height: 3px;
-    }
+  <!-- Sparkle overlay -->
+  <div class="sparkles" id="sparkles"></div>
 
-    .star-delay-1 {
-      animation-delay: 0s;
-    }
+  <!-- Scrolling marquee -->
+  <div class="marquee-container" id="marqueeContainer"></div>
 
-    .star-delay-2 {
-      animation-delay: -1s;
-    }
+  <div class="page-wrapper">
+    <div class="main-square">
 
-    .star-delay-3 {
-      animation-delay: -2s;
-    }</style><script defer="defer" src="mainPage.2f39d19cae5d6a26060e.js"></script></head><body><div id="the-background"></div><div class="manuscript-page-wrapper"><div class="manuscript-page im-fell-french-canon-regular"><p class="small-p">The</p><p class="large-p">WORKS</p><p class="small-p">OF</p><p class="large-p">lukehesluke.</p><img width="75px" src="/resources/printer_ornament.png"/><hr class="separator"/><p class="small-p"><a href="https://github.com/lukehesluke">GitHub</a></p><p class="small-p"><a href="articles/1_euclidean_construction.html">Euclidean Construction Design</a> (wip)</p></div></div></body></html>
+      <!-- Dashed connecting border -->
+      <div class="dashed-border"></div>
+
+      <!-- Corner GIFs -->
+      <div class="corner-gif corner-nw">
+        <img src="resources/images/chao.gif" alt="chao">
+      </div>
+      <div class="corner-gif corner-ne">
+        <img src="resources/images/kirbswim_left.gif" alt="kirby swimming">
+      </div>
+      <div class="corner-gif corner-sw">
+        <img src="resources/images/kirbrun_left.gif" alt="kirby running">
+      </div>
+      <div class="corner-gif corner-se">
+        <img src="resources/images/icosa.gif" alt="icosahedron">
+      </div>
+
+      <!-- XP Window -->
+      <div class="xp-window">
+        <div class="xp-titlebar">
+          <span class="xp-titlebar-text">gallery.exe</span>
+          <div class="xp-buttons">
+            <div class="xp-btn xp-btn-min"></div>
+            <div class="xp-btn xp-btn-max"></div>
+            <div class="xp-btn xp-btn-close"></div>
+          </div>
+        </div>
+        <div class="xp-content">
+          <div class="carousel" id="carousel">
+            <div class="carousel-track" id="carouselTrack">
+              <!-- Slides injected by JS -->
+            </div>
+            <div class="carousel-nav carousel-nav-prev" id="prevBtn">
+              <div class="carousel-nav-arrow">&lsaquo;</div>
+            </div>
+            <div class="carousel-nav carousel-nav-next" id="nextBtn">
+              <div class="carousel-nav-arrow">&rsaquo;</div>
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
+            <div class="carousel-counter" id="carouselCounter"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GitHub link -->
+      <div class="link-area">
+        <a href="https://github.com/lukehesluke" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // --- Config ---
+    var carouselImages = [
+      'resources/images/carousel/sushi1.png',
+      'resources/images/carousel/precious.png'
+    ];
+    var marqueeMessages = [
+      '* ~ welcome to my page ~ *',
+      '* ~ thanks for stopping by ~ *'
+    ];
+    // --- Sparkles ---
+    (function() {
+      var container = document.getElementById('sparkles');
+      for (var i = 0; i < 25; i++) {
+        var s = document.createElement('div');
+        s.className = 'sparkle';
+        s.style.left = Math.random() * 100 + '%';
+        s.style.top = Math.random() * 100 + '%';
+        s.style.setProperty('--dur', (2 + Math.random() * 4) + 's');
+        s.style.animationDelay = (Math.random() * 5) + 's';
+        container.appendChild(s);
+      }
+    })();
+
+    // --- Carousel ---
+    (function() {
+      var track = document.getElementById('carouselTrack');
+      var dotsContainer = document.getElementById('carouselDots');
+      var counter = document.getElementById('carouselCounter');
+      var current = 0;
+
+      // Build slides
+      carouselImages.forEach(function(src, i) {
+        var slide = document.createElement('div');
+        slide.className = 'carousel-slide';
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = 'slide ' + (i + 1);
+        img.draggable = false;
+        slide.appendChild(img);
+        track.appendChild(slide);
+
+        var dot = document.createElement('div');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', function() { goTo(i); });
+        dotsContainer.appendChild(dot);
+      });
+
+      function updateCounter() {
+        counter.textContent = (current + 1) + '/' + carouselImages.length;
+      }
+
+      function goTo(index) {
+        if (index < 0) index = carouselImages.length - 1;
+        if (index >= carouselImages.length) index = 0;
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        var dots = dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach(function(d, i) {
+          d.classList.toggle('active', i === current);
+        });
+        updateCounter();
+      }
+
+      document.getElementById('prevBtn').addEventListener('click', function() {
+        goTo(current - 1);
+      });
+      document.getElementById('nextBtn').addEventListener('click', function() {
+        goTo(current + 1);
+      });
+
+      updateCounter();
+    })();
+
+    // --- Marquee ---
+    (function() {
+      var container = document.getElementById('marqueeContainer');
+      var speed = 80; // pixels per second
+
+      function showNext() {
+        var text = marqueeMessages[Math.floor(Math.random() * marqueeMessages.length)];
+        var span = document.createElement('span');
+        span.className = 'marquee-text';
+        span.textContent = text;
+        container.appendChild(span);
+
+        // Measure width once rendered
+        var textWidth = span.offsetWidth;
+        var screenWidth = window.innerWidth;
+        var totalDistance = screenWidth + textWidth;
+        var duration = totalDistance / speed;
+
+        // Start off-screen right, end off-screen left
+        span.style.left = screenWidth + 'px';
+        span.style.transition = 'transform ' + duration + 's linear';
+
+        // Force reflow then start animation
+        span.offsetWidth;
+        span.style.transform = 'translateX(-' + totalDistance + 'px)';
+
+        span.addEventListener('transitionend', function() {
+          container.removeChild(span);
+          showNext();
+        });
+      }
+
+      showNext();
+    })();
+  </script>
+
+</body>
+</html>
