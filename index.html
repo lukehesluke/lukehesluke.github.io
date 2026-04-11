@@ -15,6 +15,7 @@
     body {
       background-color: #ff91a4;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -432,19 +433,18 @@
 
   <script>
     // --- Config ---
-    var carouselImages = [
+    const carouselImages = [
       'resources/images/carousel/sushi1.png',
-      'resources/images/carousel/precious.png'
     ];
-    var marqueeMessages = [
+    const marqueeMessages = [
       '* ~ welcome to my page ~ *',
       '* ~ thanks for stopping by ~ *'
     ];
     // --- Sparkles ---
     (function() {
-      var container = document.getElementById('sparkles');
-      for (var i = 0; i < 25; i++) {
-        var s = document.createElement('div');
+      const container = document.getElementById('sparkles');
+      for (let i = 0; i < 25; i++) {
+        const s = document.createElement('div');
         s.className = 'sparkle';
         s.style.left = Math.random() * 100 + '%';
         s.style.top = Math.random() * 100 + '%';
@@ -456,27 +456,39 @@
 
     // --- Carousel ---
     (function() {
-      var track = document.getElementById('carouselTrack');
-      var dotsContainer = document.getElementById('carouselDots');
-      var counter = document.getElementById('carouselCounter');
-      var current = 0;
+      const track = document.getElementById('carouselTrack');
+      const dotsContainer = document.getElementById('carouselDots');
+      const counter = document.getElementById('carouselCounter');
+      let current = 0;
+
+      const isSingleImage = carouselImages.length <= 1;
 
       // Build slides
       carouselImages.forEach(function(src, i) {
-        var slide = document.createElement('div');
+        const slide = document.createElement('div');
         slide.className = 'carousel-slide';
-        var img = document.createElement('img');
+        const img = document.createElement('img');
         img.src = src;
         img.alt = 'slide ' + (i + 1);
         img.draggable = false;
         slide.appendChild(img);
         track.appendChild(slide);
 
-        var dot = document.createElement('div');
-        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-        dot.addEventListener('click', function() { goTo(i); });
-        dotsContainer.appendChild(dot);
+        if (!isSingleImage) {
+          const dot = document.createElement('div');
+          dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          dot.addEventListener('click', function() { goTo(i); });
+          dotsContainer.appendChild(dot);
+        }
       });
+
+      if (isSingleImage) {
+        document.getElementById('prevBtn').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'none';
+        dotsContainer.style.display = 'none';
+        counter.style.display = 'none';
+        return;
+      }
 
       function updateCounter() {
         counter.textContent = (current + 1) + '/' + carouselImages.length;
@@ -487,7 +499,7 @@
         if (index >= carouselImages.length) index = 0;
         current = index;
         track.style.transform = 'translateX(-' + (current * 100) + '%)';
-        var dots = dotsContainer.querySelectorAll('.carousel-dot');
+        const dots = dotsContainer.querySelectorAll('.carousel-dot');
         dots.forEach(function(d, i) {
           d.classList.toggle('active', i === current);
         });
@@ -506,21 +518,21 @@
 
     // --- Marquee ---
     (function() {
-      var container = document.getElementById('marqueeContainer');
-      var speed = 80; // pixels per second
+      const container = document.getElementById('marqueeContainer');
+      const speed = 80; // pixels per second
 
       function showNext() {
-        var text = marqueeMessages[Math.floor(Math.random() * marqueeMessages.length)];
-        var span = document.createElement('span');
+        const text = marqueeMessages[Math.floor(Math.random() * marqueeMessages.length)];
+        const span = document.createElement('span');
         span.className = 'marquee-text';
         span.textContent = text;
         container.appendChild(span);
 
         // Measure width once rendered
-        var textWidth = span.offsetWidth;
-        var screenWidth = window.innerWidth;
-        var totalDistance = screenWidth + textWidth;
-        var duration = totalDistance / speed;
+        const textWidth = span.offsetWidth;
+        const screenWidth = window.innerWidth;
+        const totalDistance = screenWidth + textWidth;
+        const duration = totalDistance / speed;
 
         // Start off-screen right, end off-screen left
         span.style.left = screenWidth + 'px';
