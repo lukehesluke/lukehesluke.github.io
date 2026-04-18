@@ -206,10 +206,19 @@
     /* Window content area */
     .xp-content {
       flex: 1;
-      background: #3a4a5c url('resources/images/a_wm_bg_2x.png') center/cover no-repeat;
+      background-color: hsl(229, 75%, 16%);
       border-top: 1px solid #002a7a;
       position: relative;
       overflow: hidden;
+    }
+    .xp-content::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('resources/images/a_wm_bg_2x.png') center/cover no-repeat;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
     }
 
     /* Carousel */
@@ -217,6 +226,7 @@
       position: relative;
       width: 100%;
       height: 100%;
+      z-index: 1;
     }
 
     .carousel-track {
